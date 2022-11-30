@@ -8,7 +8,7 @@ function Forecast() {
 
     useEffect(() => {
         fetch(
-            'https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&cnt=5&appid=729134e5477f7d492bfaa4f690bb46ac'
+            'https://api.openweathermap.org/data/2.5/forecast?lat=-34.67&lon=-58.71&cnt=5&units=metric&appid=729134e5477f7d492bfaa4f690bb46ac'
         )
             .then((response) => response.json())
             .then((data) => {
@@ -29,9 +29,9 @@ function Forecast() {
                     }
                 );
                 const forecastCards = dataForecastFormatted.map(
-                    (dataForecastCard) => {
+                    (dataForecastCard, idx) => {
                         return (
-                            <div className='forecast-card'>
+                            <div key={idx} className='forecast-card'>
                                 <div className='forecast-card_day'>
                                     {dataForecastCard.hour}{' '}
                                     {dataForecastCard.hour < 12 ? 'am' : 'pm'}
