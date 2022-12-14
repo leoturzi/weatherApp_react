@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getHours } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
+import { API_KEY } from '../constant';
 
 function Forecast() {
     const [forecastCards, setForecastCards] = useState([]);
@@ -8,7 +9,7 @@ function Forecast() {
 
     useEffect(() => {
         fetch(
-            'https://api.openweathermap.org/data/2.5/forecast?lat=-34.67&lon=-58.71&cnt=5&units=metric&appid=729134e5477f7d492bfaa4f690bb46ac'
+            `https://api.openweathermap.org/data/2.5/forecast?lat=-34.67&lon=-58.71&cnt=5&units=metric&appid=${API_KEY}`
         )
             .then((response) => response.json())
             .then((data) => {

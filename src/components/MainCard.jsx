@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_KEY } from '../constant';
 
 function MainCard() {
     const [mainCard, setMainCard] = useState({});
@@ -6,7 +7,7 @@ function MainCard() {
 
     useEffect(() => {
         fetch(
-            'https://api.openweathermap.org/data/2.5/weather?lat=-34.67&lon=-58.71&units=metric&appid=729134e5477f7d492bfaa4f690bb46ac'
+            `https://api.openweathermap.org/data/2.5/weather?lat=-34.67&lon=-58.71&units=metric&appid=${API_KEY}`
         )
             .then((response) => response.json())
             .then((data) => {
