@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { API_KEY } from '../constant';
+import './MainCard.css';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function MainCard() {
     const [mainCard, setMainCard] = useState({});
@@ -18,38 +21,56 @@ function MainCard() {
     }, []);
     if (isLoading) {
         return (
-            <div className='main-card col-md-6 m-auto'>
+            <div className='main-card'>
                 <h1>Cargando...</h1>
             </div>
         );
     }
 
     return (
-        <div className='main-card col-md-6 m-auto'>
+        <div className='main-card mt-3 mx-auto col-md-3 col-sm-6'>
             <div className='main-card_city'>
-                <h4>Merlo, Buenos Aires, Argentina</h4>
+                <h4>Merlo, Buenos Aires</h4>
             </div>
-            <div className='main-card_temperature-value'>
-                {mainCard.main.temp}
+            <div className='main-card_weather-body'>
+                <div>
+                    <Col className='main-card_temperature-value'>
+                        {Math.round(mainCard.main.temp)} &#8451;
+                    </Col>
+                    <Col className='main-card_temperature-icon'>
+                        <img
+                            src={`http://openweathermap.org/img/wn/${mainCard.weather[0].icon}@2x.png`}
+                            alt=''
+                        />
+                    </Col>
+                </div>
+                <div>
+                    <Col className='main-card_temperature_min justify-content-center'>
+                        Min: {mainCard.main.temp_min} &#8451;
+                    </Col>
+                    <Col className='main-card_temperature_max justify-content-center'>
+                        Max: {mainCard.main.temp_max} &#8451;
+                    </Col>
+                </div>
+                <ul className='main-card_weather-info py-3 px-4'>
+                    <li>
+                        <span>Feels like:</span>{' '}
+                        <span>{mainCard.main.feels_like} &#8451;</span>
+                    </li>
+                    <li>
+                        <span>Pressure:</span>{' '}
+                        <span>{mainCard.main.pressure} Hpa</span>
+                    </li>
+                    <li>
+                        <span>Humidity:</span>{' '}
+                        <span>{mainCard.main.humidity} %</span>
+                    </li>
+                    <li>
+                        <span>Wind Speed:</span>{' '}
+                        <span>{mainCard.wind.speed} km/h</span>
+                    </li>
+                </ul>
             </div>
-            <div className='main-card_temperature-icon'>
-                <img
-                    src={`http://openweathermap.org/img/wn/${mainCard.weather[0].icon}@2x.png`}
-                    alt=''
-                />
-            </div>
-            <div className='main-card_temperature_min'>
-                {mainCard.main.temp_min}
-            </div>
-            <div className='main-card_temperature_max'>
-                {mainCard.main.temp_max}
-            </div>
-            <ul>
-                <li>Feels like: {mainCard.main.feels_like}</li>
-                <li>Pressure: {mainCard.main.pressure}</li>
-                <li>Humidity: {mainCard.main.humidity}</li>
-                <li>Wind Speed: {mainCard.wind.speed}</li> {/*viene en m/seg*/}
-            </ul>
         </div>
     );
 }
