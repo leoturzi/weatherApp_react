@@ -4,13 +4,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import ToggleOpt from '../../components/ToggleOpt';
-import './header.css';
+import sundayLogo from '../../assets/images/logo.png';
+import './Header.css';
 
 function Header() {
     return (
         <Navbar bg='light' expand='lg'>
-            <Container fluid>
-                <Navbar.Brand href='#'>Navbar scroll</Navbar.Brand>
+            <Container>
+                <Navbar.Brand href='#' className='logo'>
+                    <img src={sundayLogo} alt='' />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls='navbarScroll' />
                 <Navbar.Collapse
                     id='navbarScroll'
@@ -18,7 +21,7 @@ function Header() {
                 >
                     <Nav
                         className='my-2 my-lg-0 '
-                        style={{ maxHeight: '100px' }}
+                        style={{ maxHeight: '180px' }}
                         navbarScroll
                     >
                         <NavDropdown
