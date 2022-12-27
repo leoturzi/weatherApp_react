@@ -32,7 +32,7 @@ function MainCard() {
             <div className='main-card_city'>
                 <h4>Merlo, Buenos Aires</h4>
             </div>
-            <div className='main-card_weather-body'>
+            <div className='main-card_weather-body '>
                 <div>
                     <Col className='main-card_temperature-value'>
                         {Math.round(mainCard.main.temp)} &#8451;
@@ -44,7 +44,7 @@ function MainCard() {
                         />
                     </Col>
                 </div>
-                <div>
+                <div className='mx-3 pb-2'>
                     <Col className='main-card_temperature_min justify-content-center'>
                         Min: {mainCard.main.temp_min} &#8451;
                     </Col>
