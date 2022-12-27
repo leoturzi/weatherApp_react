@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getHours } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import { API_KEY } from '../constant';
+import './Forecast.css';
 
 function Forecast() {
     const [forecastCards, setForecastCards] = useState([]);
@@ -23,8 +24,9 @@ function Forecast() {
                         const hour = getHours(dateTz);
                         return {
                             hour,
-                            temp_min: dayForecast.main.temp_min,
-                            temp_max: dayForecast.main.temp_max,
+                            temp: Math.round(dayForecast.main.temp),
+                            temp_min: Math.round(dayForecast.main.temp_min),
+                            temp_max: Math.round(dayForecast.main.temp_max),
                             icon: dayForecast.weather[0].icon,
                         };
                     }
@@ -43,11 +45,8 @@ function Forecast() {
                                         alt=''
                                     />
                                 </div>
-                                <div className='forecast-card_temp-min'>
-                                    {dataForecastCard.temp_min}
-                                </div>
-                                <div className='forecast-card_temp-max'>
-                                    {dataForecastCard.temp_max}
+                                <div className='forecast-card_temp'>
+                                    {dataForecastCard.temp} &#8451;
                                 </div>
                             </div>
                         );
@@ -67,8 +66,10 @@ function Forecast() {
     }
     return (
         <div className='forecast'>
-            <h3>15 hr forecast</h3>
-            <div className='forecast-container d-flex'>{forecastCards}</div>
+            <h3>Proximas horas...</h3>
+            <div className='forecast-container d-flex py-2'>
+                {forecastCards}
+            </div>
         </div>
     );
 }

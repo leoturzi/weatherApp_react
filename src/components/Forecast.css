@@ -1,0 +1,37 @@
+.forecast {
+    width: fit-content;
+    margin: auto;
+}
+
+.forecast-container {
+    background-color: rgb(238, 236, 236);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.forecast-card_day {
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid black;
+}
+
+.forecast-card_temp {
+    text-align: center;
+}
+
+@media screen and (max-width: 520px) {
+    .forecast {
+        width: 100%;
+    }
+
+    .forecast > h3 {
+        text-align: center;
+    }
+
+    .forecast-container {
+        overflow-x: scroll;
+    }
+}
